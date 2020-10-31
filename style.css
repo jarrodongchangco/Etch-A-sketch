@@ -1,0 +1,85 @@
+:root {
+  --colNum: 4;
+  --buttonHeight: 240px;
+  --buttonWidth: 240px;
+}
+body {
+    background-color:brown;
+}
+
+* {
+    box-sizing: border-box;
+  }
+
+  
+.grid-container {
+  display: grid;
+  /* grid-template-rows: repeat(var(--rowNum), var(--gridHeight)); */
+  grid-template-columns: repeat(var(--colNum), auto);
+  /* grid-template-columns: auto auto auto auto; */
+  background-color: burlywood;
+
+  width:960px; /* or whatever width you want. */
+  max-width:960px;
+  height: 960px;
+  max-height: 960px;
+}
+
+.reset-container {
+  height: 100px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  /* padding: 20px;
+  font-size: 30px; */
+  text-align: center;
+  width: var(--buttonWidth);
+  height: var(--buttonHeight);
+  min-width: 2px;
+  min-height: 2px;
+}
+.grid-size-div{
+  display: inline-block;
+}
+.center {
+  display: flex;                                
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  border: 5px;
+  color: white;
+  padding: 20px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 40px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.button2 {
+  background-color: lightskyblue;
+  padding: 20px 20px;
+}
+/* .grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  display: inline-block;
+} */
+.square h1 {
+    color: #fff;
+}   
+
+.space {
+    height: 20px;
+}
+
+.wrapper {
+  display: grid;
+  /* grid-template-rows: repeat(var(--rowNum), var(--gridHeight)); */
+  grid-template-columns: repeat(var(--colNum), auto);
+}
