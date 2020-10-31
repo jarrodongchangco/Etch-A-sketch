@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Rock Paper Scissors</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="center reset-container"><button id="reset-button" class="button2">Click to Reset</button></div>
+        
+        <div class = "center">
+        <div id = "main-grid" class="grid-container"></div>
+        </div>
+       <script>
+ 
+
+        const container = document.querySelector('.grid-container');
+           	for(let i=0; i<4; i++){
+
+    		    for(let y=0; y<4; y++){
+    		    let btn = document.createElement("div");
+                btn.classList.add('grid-item');
+                container.appendChild(btn);
+    
+                }
+            }
+
+        const buttons = document.querySelectorAll('div.grid-item');
+
+        buttons.forEach((button) => {
+            button.addEventListener('mouseover', () => {
+            button.style.backgroundColor = 'orange';
+        });
+        });
+        const resetButton = document.querySelector('#reset-button');
+        resetButton.addEventListener('click', () => {
+            let userWidth = GetWidthSize();
+            if(userWidth==0){
+                return 0;
+            }
+            SetGridSize(userWidth);
+
+        });
+            
+            
+
+        function GetWidthSize(){
+            // let why = prompt("FDaffas");
+            let userWidth = 0;
+            while (true){
+            userWidth = prompt("Enter width");
+            userWidth = parseInt(userWidth);
+            // console.log("it is a ",+ userWidth)
+                if(userWidth == null || isNaN(userWidth)){
+                    alert("That is not a number...");
+                    return 0;
+                }
+                else if(userWidth>100||userWidth<=0){
+                    alert("Input size is wrong");
+                    return 0;
+                }
+                else if(Number.isInteger(userWidth)){
+                    return userWidth;
+                }
+                
+            }
+            return userWidth;
+        }
+
+        // When button is clicked these functions are called
+        function SetGridSize(numOfColumns){
+            ClearGrid();
+            let r = document.querySelector(':root');
+            r.style.setProperty('--colNum', numOfColumns);
+            CalcSizeOfButton(numOfColumns)
+            CreateButton(numOfColumns);
+        
+        }
+
+        function ClearGrid() {
+            //Clearing Grid
+            const myGridNodes = document.getElementById("main-grid");
+            while (myGridNodes.firstChild) {
+                myGridNodes.removeChild(myGridNodes.lastChild);
+            }
+        }
+
+        function CreateButton(numOfColumns) {
+            // sizeOfButton = CalcSizeOfButton;
+            for(let i=0; i<numOfColumns; i++){
+                for(let y=0; y<numOfColumns; y++){
+                let btn = document.createElement("div");
+                btn.classList.add('grid-item');
+                container.appendChild(btn);
+                    }
+                }
+                MouseOverEvent();
+                // console.log("set grid size here");
+                // console.log(width);
+                // r.style.setProperty('--colNum', width);
+                // r.style.setProperty('--colNum', width);
+
+        }
+
+        function CalcSizeOfButton(numOfColumns){
+            const grid = document.getElementById("main-grid");
+            let gridStyles = window.getComputedStyle(grid);
+            //
+            let gridWidth =  parseInt(gridStyles.getPropertyValue('width'));
+            
+            btnDimensions = gridWidth / numOfColumns
+
+
+            console.log(btnDimensions)   
+            let r = document.querySelector(':root');
+            // r.style.setProperty('--colNum', numOfColumns);
+            r.style.setProperty('--buttonHeight', btnDimensions);
+            r.style.setProperty('--buttonWidth', btnDimensions); 
+            console.log("why"+r.style.getPropertyValue('--buttonWidth'));
+            // let r = document.querySelector(':root');
+            // r.style.setProperty('--colNum', numOfColumns);
+        }
+
+        function MouseOverEvent(){ 
+            const buttons = document.querySelectorAll('div.grid-item');
+            // we use the .forEach method to iterate through each button
+            buttons.forEach((button) => {
+            button.addEventListener('mouseover', () => {
+                button.style.backgroundColor = 'orange';
+            });
+            });
+        }
+       </script>
+
+    </body>
+</html>
